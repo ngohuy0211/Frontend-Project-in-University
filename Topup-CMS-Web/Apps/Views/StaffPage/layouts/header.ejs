@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>University of Greenwich Viet Nam</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- <link href="/static/User/css/slider.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.15/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.15/css/skins/_all-skins.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.15/js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper" id="main">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/staff" class="logo">
+                <span class="logo-mini"><b></b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>STAFF</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <%for(x in locals.user){%>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img <%if(locals.user[x].User_avatar == ''){%>src="/static/images/user2-160x160.jpg"
+                                    <%} else{%>src="/static/images/<%=locals.user[x].User_avatar%>" <%}%>  class="user-image" alt="User Image">
+                            <span class="hidden-xs"><%=locals.user[x].User_full%></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User avatar -->
+                                <li class="user-header">
+                                    <img <%if(locals.user[x].User_avatar == ''){%>src="/static/images/user2-160x160.jpg"
+                                    <%} else{%>src="/static/images/<%=locals.user[x].User_avatar%>" <%}%>  class="user-image" alt="User Image">
+                                    <span class="hidden-xs"><%=locals.user[x].User_full%></span>
+                                    <p>
+                                       <small>Role</small>
+                                        Staff
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/staff/profile/" class="btn btn-info">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/logout" class="btn btn-dark">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <%}%>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <%-include ('sidebar_left')-%>

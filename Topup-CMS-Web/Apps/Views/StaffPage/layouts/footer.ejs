@@ -1,0 +1,30 @@
+
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<!-- CKediter 4 -->
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<!-- jQuery 3 -->
+<!-- jQuery UI 1.11.4 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="https://unpkg.com/admin-lte@2.4.12/dist/js/adminlte.min.js"></script>
+<script>
+    var textarea = document.querySelector('textarea');
+
+    textarea.addEventListener('keydown', autosize);
+
+    function autosize() {
+        var el = this;
+        setTimeout(function () {
+            el.style.cssText = 'height:auto; padding:0';
+            // for box-sizing other than "content-box" use:
+            // el.style.cssText = '-moz-box-sizing:content-box';
+            el.style.cssText = 'height:' + el.scrollHeight + 'px';
+        }, 0);
+    }
+</script>
+</body>
+    </html>

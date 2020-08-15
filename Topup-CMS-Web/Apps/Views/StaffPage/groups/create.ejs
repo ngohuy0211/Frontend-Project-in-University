@@ -1,0 +1,62 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Group Personal Tutor Support Management
+        </h1>
+    </section>
+
+<!-- Main content -->
+<main class="main-container container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="content-panel">
+                    <form class="form-horizontal" method="POST">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Create Group Support</h3>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Group ID</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="" name="group_id">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Group Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="" name="group_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tutor</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <select name="tutor_id" class="form-control">
+                                        <%for (x in data.tutor){%>
+                                        <option value=<%=data.tutor[x]._id%>><%=data.tutor[x].User_full%></option>
+                                        <%}%>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-primary" type="submit" value="Create">
+                                <a class="btn btn-danger" href="/staff/PersonalSupport" role="button">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%-include ('../layouts/footer')-%>

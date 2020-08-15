@@ -1,0 +1,86 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Account Management
+        </h1>
+    </section>
+
+<!-- Main content -->
+<section class="content">
+    <h1>Account</h1>
+    <a href="/staff/Account/<%=data.role%>/Create" class="btn btn-primary">
+       <i class="fa fa-plus"></i> Create New Account
+    </a><br>
+    <br>
+    <a href="/staff/Account/<%=data.role%>/SendMail" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Send Mail
+     </a><br>
+     <br>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>User ID</th>
+                <th>User Full</th>
+                <th>User Mail</th>
+                <th>Create at</th>
+                <th>Update at</th>
+                <th></th>
+            </tr>
+            <tr>
+                <%for(x in data.account){%>
+                <td>
+                    <%=data.account[x].User_ID%>
+                </td>
+                <td>
+                    <%=data.account[x].User_full%>
+                </td>
+                <td>
+                    <%=data.account[x].User_mail%>
+                </td>
+                <td>
+                    <%=data.account[x].Create_at%>
+                </td>
+                <td>
+                    <%=data.account[x].Update_at%>
+                </td>
+                <td>
+                    <a href="/staff/Account/<%=data.role%>/Detail/<%=data.account[x]._id%>" title="Detail">
+                        <i class="fa fa-eye">Detail</i>
+                    </a> &nbsp;
+                    <a href="/staff/Account/<%=data.role%>/Update/<%=data.account[x]._id%>" title="Update">
+                        <i class="fa fa-pencil">Update</i>
+                    </a> &nbsp;
+                    <a href="/staff/Account/<%=data.role%>/Delete/<%=data.account[x]._id%>" title="Delete" onclick="return confirm('Are you sure delete?')">
+                        <i class="fa fa-trash">Delete</i>
+                    </a>
+                </td>
+            </tr>
+            <%}%>
+        </table>
+        <div class="panel-footer">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/staff/Account/<%=data.role%>/?page=<%=data.pagePrev%>">&laquo;</a></li>
+                    <%for(i=1; i<=data.totalPages; i++){%>
+                    <li class="page-item"><a class="page-link" href="/staff/Account/<%=data.role%>/?page=<%=i%>"><%=i%></a></li>
+                    <%}%>
+                    <li class="page-item"><a class="page-link" href="/staff/Account/<%=data.role%>/?page=<%=data.pageNext%>">&raquo;</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                <a class="btn btn-danger" href="/staff/Account" role="button">Back</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%-include ('../layouts/footer.ejs')-%>

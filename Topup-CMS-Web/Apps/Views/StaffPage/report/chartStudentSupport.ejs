@@ -1,0 +1,78 @@
+<%-include ('../layouts/header.ejs')-%>
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <!-- Main content -->
+   <main class="main-container container">
+      <div class="view-account">
+         <section class="module">
+            <div class="module-inner">
+               <h3 class="fieldset-title">Total number of students: <%=data.sum_student%></h3>
+               <div class="content-panel">
+                  <canvas id="Student" width="800" height="450"></canvas>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <h3 style="text-align: center;">Table: Detail the status of students have a personal tutor</h3>
+            <div class="table-responsive">
+               <table class="table table-striped table-hover" border="2">
+                  <tr>
+                     <th>Students have a personal tutor</th>
+                     <th>Students haven't a personal tutor</th>
+                  </tr>
+                  <tr>
+                     <td id="st_tutor"></td>
+                     <td id="st_not_tutor"></td>
+                  </tr>
+               </table>
+            </div>
+            <div class="form-group">
+               <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+               </div>
+            </div>
+      </div>
+</div>
+</section>
+</div>
+</main>
+<!-- /.content -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/User/js/chart.js"></script>
+<script>
+   socket.on('list_student', (Student_support, Student_not_Support)=>{
+      let student_be_support =[]
+       for(i = 0; i <= Student_not_Support.length; i++)
+       {
+           student_be_support = Student_support.filter(num => num !== Student_not_Support[i])
+       }
+       for(i =0; i< student_be_support.length -1; i++)
+       {
+          for(x = 0; x <= Student_not_Support.length-1; x++)
+          {
+              if(Student_not_Support[x] === student_be_support[i])
+              {
+                  Student_not_Support.splice(i, student_be_support.length)
+              }
+          }
+       }
+       socket.emit('Student_notSupport', Student_not_Support)
+      new Chart(document.getElementById("Student"), {
+         type: 'pie',
+         data: {
+           labels: ["Students have a personal tutor", "Students haven't a personal tutor"],
+           datasets: [{
+             label: "Unit(Student)",
+             backgroundColor: ["#3e95cd", "#8e5ea2"],
+             data: [Student_support.length,Student_not_Support.length]
+           }]
+         },
+         options: {
+           title: {
+             display: true,
+             text: 'The proportion of students have a personal tutor'
+           }
+         }
+     });
+   })
+</script>
+
+<%-include ('../layouts/footer.ejs')-%>

@@ -1,0 +1,79 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                        <form class="form-horizontal">
+                            <%for(x in locals.user){%>
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Your Profile</h3>
+                                    <div class="form-group avatar">
+                                        <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                            <img class="img-rounded img-responsive" <%if(locals.user[x].User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                            <%}else{%>src="/static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%> alt="">
+                                        </figure>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_full%>
+                                        </div>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_address%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_gender%>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Date</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_birth%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_mail%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <%=locals.user[x].User_phone%>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            <%}%>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <a class="btn btn-secondary" href="/staff">Cancel</a>
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- /.content -->
+</div>
+
+<%-include ('../layouts/footer.ejs')-%>

@@ -1,0 +1,48 @@
+<%-include ('layouts/header')-%>
+
+<div class="clearfix"></div>
+<script>
+    // Tao doi tuong array
+    var slide = new Array();
+    slide[0] = "https://images.shiksha.com/mediadata/images/1534160225php2u9lxX.jpeg";
+    slide[1] = "https://images.shiksha.com/mediadata/images/1534160225phpCiiXS6.jpeg";
+    slide[2] = "https://images.shiksha.com/mediadata/images/1534160225phpFUE3qo.jpeg";
+    // Tao bien n de luu vi tri phan tu anh
+    var n = 0;
+    function next()
+    {
+        n++;
+        // tac dong vao the html co id=slide, thay doi gia tri cua thuoc tinh src
+        document.getElementById("slide").setAttribute("src",slide[n]);
+        // khi den phan tu cuoi cung thi reset n
+        if(n == slide.length - 1)
+        {
+            n = 0;
+        }
+    }
+    function prev()
+    {
+        if(n == 0)
+        {
+            n = slide.length;
+        }
+        n--;
+        document.getElementById("slide").setAttribute("src",slide[n]);
+    }
+</script>
+<div class="slider">
+    <img src="https://pbs.twimg.com/media/DqHeP-4WwAE63Vc?format=jpg&name=medium" style="width: 100%; height: 100%;" id="slide" class="img-responsive">
+    <div id="next" onclick="next()">Next</div>
+    <div id="prev" onclick="prev()">Prev</div>
+    <div class="box-text">
+        <div>
+            The international standard training program of Greenwich University is the
+            Vietnam-based campus of the University of Greenwich - UK on the basis of the cooperation
+            between Greenwich University and FPT Education Organization. FPT Education is proud of having the largest
+            number of students studying Information Technology in Vietnam.
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<%-include ('layouts/footer')-%>

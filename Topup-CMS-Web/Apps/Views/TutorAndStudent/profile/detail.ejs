@@ -1,0 +1,44 @@
+<%-include ('../layouts/header.ejs');-%>
+
+<div class="col-md-10 col-sm-9 col-xs-12">
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                            <fieldset class="fieldset">
+                                <br>
+                                <h3 class="fieldset-title">Your Profile</h3>
+                                <br> <br>
+                                <%for(x in locals.user){%>
+                                    <div class="card">
+                                        <img class=""
+                                        <%if(locals.user[x].User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                        <%}else{%>src="/static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%> alt="" style="width:50%">
+                                    <h2><%=locals.user[x].User_full%></h2>
+                                    <p class="title">Role: <%=locals.role%></p>
+                                    <p class="title">ID: <%=locals.user[x].User_ID%></p>
+                                    <p class="title">Email: <%=locals.user[x].User_mail%></p>
+                                    <p class="font">Day Of Birth: <%=locals.user[x].User_birth%></p>
+                                    <p class="font">Address: <%=locals.user[x].User_address%></p>
+                                    <p class="font">Gender: <%=locals.user[x].User_gender%></p>
+                                    <p class="font">Phone Number: <%=locals.user[x].User_phone%></p>
+                                    </div>
+                                <%}%>
+                            </fieldset>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <button class="btn btn-secondary"><a href="/user">Back</a></button>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<%-include ('../layouts/footer.ejs');-%>

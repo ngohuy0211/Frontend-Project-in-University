@@ -1,0 +1,15 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<div class="content-wrapper">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <%for (x in data.Role ){%>
+                <th><a class="btn btn-info" href="/staff/Account/<%=data.Role[x]._id%>"><%=data.Role[x].roleName%></a></th>
+                <%}%>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<%-include ('../layouts/footer.ejs')-%>

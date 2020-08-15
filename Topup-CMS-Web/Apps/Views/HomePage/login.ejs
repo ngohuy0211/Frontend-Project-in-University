@@ -1,0 +1,66 @@
+<%-include ('layouts/header')-%>
+
+<div class="clearfix"></div>
+<div class="login">
+    <li class="steps active" style="list-style: none;">
+        <div class="step-description">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="run-customer">
+                        <%if(data && data.error){%>
+                            <div class="alert alert-danger"><%=data.error%></div>
+                        <%}%>
+                        <h5>
+                            Login
+                        </h5>
+                        <script type = "text/javascript">
+                            function validateForm()  {
+                                var u = document.getElementById("email").value;
+                                var p = document.getElementById("password").value;
+                    
+                                if(u== "") {
+                                    alert("Please enter your Email");
+                                    return false;
+                                }
+                                if(p == "") {
+                                    alert("Please enter you Password");
+                                    return false;
+                                }
+                                return true;
+                            }
+                        </script>
+                        <form method="POST" onsubmit = "return validateForm()">
+                            <div class="form-row">
+                                <label class="lebel-abs">
+                                    Email 
+                                    <strong class="red">
+                                    *
+                                    </strong>
+                                </label>
+                                <input type="email" class="input namefild" name="email" required id="email">
+                            </div>
+                            <div class="form-row">
+                                <label class="lebel-abs">
+                                    Password 
+                                    <strong class="red">
+                                    *
+                                    </strong>
+                                </label>
+                                <input type="password" class="input namefild" name="password" required id="password">
+                            </div>
+                            <p class="forgoten">
+                                <a href="/ForgotPassword">
+                                    Forgot your password?
+                                </a>
+                            </p>
+                            <input type="submit" value="Login" style="width: 90px; height: 35px; border-radius: 10px;">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<div class="clearfix"></div>
+<%-include('./layouts/footer.ejs')-%>

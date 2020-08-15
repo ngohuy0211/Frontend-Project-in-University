@@ -1,0 +1,46 @@
+<%-include ('../layouts/header.ejs')-%>
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <!-- Main content -->
+   <main class="main-container container">
+      <div class="view-account">
+         <section class="module">
+            <div class="module-inner">
+               <h3 class="fieldset-title">Personal Tutor Support</h3>
+               <input type="hidden" value="<%=data.tutor_id%>" id="tutor_id">
+            </div>
+            <div class="clearfix"></div>
+            <h3 style="text-align: center;"></h3>
+            <div class="table-responsive">
+               <table class="table table-striped table-hover" border="2">
+                  <tr id="user_full">
+                     <th>Full Name</th>
+                  </tr>
+               </table>
+            </div>
+            <div class="form-group">
+               <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                  <a class="btn btn-danger" href="/staff/chart" role="button">Back</a>
+               </div>
+            </div>
+      </div>
+</div>
+</section>
+</div>
+</main>
+<!-- /.content -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/User/js/chart.js"></script>
+<script>
+    socket.on('sum_student_of_tutor', (Tutor, sum_student)=>{
+        let user = []
+        for(i =0; i<=Tutor.length-1; i++)
+        {
+            let user_full = "<td>"+Tutor[i].User_full+"| <a href='/staff/TutorChart/"+Tutor[i]._id+"' title='Detail'><i class='fa fa-eye'>Detail</i></a></th>"
+            $('#user_full').append(user_full)
+            user.push(Tutor[i].User_full)
+        }
+    })
+</script>
+
+<%-include ('../layouts/footer.ejs')-%>

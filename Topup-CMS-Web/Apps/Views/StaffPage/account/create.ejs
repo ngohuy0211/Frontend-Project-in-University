@@ -1,0 +1,107 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Account Management
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                            <fieldset class="fieldset">
+                                <h3 class="fieldset-title">Create A New Account</h3>
+                                <%if(data.err){%>
+                                <div class="col-md-3 col-sm-3 col-xs-12 alert alert-danger"><%=data.err%></div>
+                                <%}%>
+                                <input type="hidden" name="User_role" value="<%=data.role_id%>">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">User ID</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" name="User_ID" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" name="User_full" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="email" class="form-control" name="User_mail" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="password" class="form-control" name="User_pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Password must be at least 8 characters, at least 1 uppercase letter and 1 lowercase letter!">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" name="User_address" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <select name="User_gender" class="form-control">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                    <div class="col-md-10 col-sm-9 col-xss-12">
+                                        <input type="phone" class="form-control" name="User_phone" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Day Of Birth</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="date" class="form-control" name="User_birth" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Avatar</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="file" class="file-uploader pull-left"
+                                            name="User_avatar">
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <input class="btn btn-primary" type="submit" value="Create">
+                                    <a class="btn btn-danger" href="/staff/Account/<%=data.role_id%>" role="button">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- /.content -->
+</div>
+
+<%-include ('../layouts/footer.ejs')-%>

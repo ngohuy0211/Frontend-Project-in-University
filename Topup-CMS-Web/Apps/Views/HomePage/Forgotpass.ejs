@@ -1,0 +1,36 @@
+<%-include ('layouts/header')-%>
+
+<div class="clearfix"></div>
+<div class="login">
+    <li class="steps active" style="list-style: none;">
+        <div class="step-description">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="run-customer">
+                        <%if(data.error){%>
+                            <div class="alert alert-danger"><%=data.error%></div>
+                        <%}%>
+                        <h5>
+                            Forgot password
+                        </h5>
+                        <form method="POST">
+                            <div class="form-row">
+                                <label class="lebel-abs">
+                                    Email 
+                                    <strong class="red">
+                                    *
+                                    </strong>
+                                </label>
+                                <input type="email" class="input namefild" name="email" required>
+                            </div>
+                            <input type="submit" value="Find" style="width: 90px; height: 35px; border-radius: 10px;">
+                        </form><br>
+                        <button class="btn btn-primary"><a href="/login"></a>Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<div class="clearfix"></div>
+<%-include ('layouts/footer')-%>

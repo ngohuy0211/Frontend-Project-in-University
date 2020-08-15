@@ -1,0 +1,70 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Manage Class
+            <small>Control panel</small>
+        </h1>
+    </section>
+
+<!-- Main content -->
+<main class="main-container container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="content-panel">
+                    <form class="form-horizontal" method="POST">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">List Student</h3>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Student Name</th>
+                                        <th>Email</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <%for(x in data.List){%>
+                                            <input type="hidden" name="_id" value=<%=data.List[x]._id%>>
+                                        <td>
+                                            <%=data.List[x].User_ID%>
+                                        </td>
+                                        <td>
+                                            <%=data.List[x].User_full%>
+                                        </td>
+                                        <td>
+                                            <%=data.List[x].User_mail%>
+                                        </td>
+                                        <td>
+                                            <a href="/staff/PersonalSupport/Group/<%=data.group_id%>/ListAddStudent/<%=data.role%>/delete/<%=data.List[x]._id%>" title="Delete"
+                                                onclick="return confirm('Are you sure delete?')">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </table>
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-primary" type="submit" value="Add">
+                                <a class="btn btn-danger" href="/staff/PersonalSupport/Group/<%=data.group_id%>/AddStudent/<%=data.role%>" role="button">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%-include ('../layouts/footer')-%>

@@ -1,0 +1,82 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Personal Tutor Support Management
+        </h1>
+    </section>
+
+<!-- Main content -->
+<section class="content">
+    <h1>Group</h1>
+    <a href="/staff/PersonalSupport/CreateGroup" class="btn btn-primary">
+       <i class="fa fa-plus"></i> Create New Group
+    </a>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Group ID</th>
+                <th>Group Name</th>
+                <th>Created_at</th>
+                <th>Updated at</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <%for(x in data.group){%>
+                <td>
+                    <%=data.group[x].Group_ID%>
+                </td>
+                <td>
+                    <%=data.group[x].Group_name%>
+                </td>
+                <td>
+                    <%=data.group[x].Create_at%>
+                </td>
+                <td>
+                    <%=data.group[x].Update_at%>
+                </td>
+                <td>
+                    <a href="/staff/PersonalSupport/GroupDetail/<%=data.group[x]._id%>" title="Detail">
+                        <i class="fa fa-eye">Detail</i>
+                    </a> &nbsp;
+                    <a href="/staff/PersonalSupport/Group/<%=data.group[x]._id%>/AddStudent/<%=data.role%>" title="Add Student">
+                        <i class="fa fa-eye">Add Student</i>
+                    </a> &nbsp;
+                    <a href="/staff/PersonalSupport/UpdateGroup/<%=data.group[x]._id%>" title="Update">
+                        <i class="fa fa-pencil">Update</i>
+                    </a> &nbsp;
+                    <a href="/staff/PersonalSupport/DeleteGroup/<%=data.group[x]._id%>" title="Delete" onclick="return confirm('Are you sure delete?')">
+                        <i class="fa fa-trash">Delete</i>
+                    </a>
+                </td>
+            </tr>
+            <%}%>
+        </table>
+        <div class="panel-footer">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/staff/PersonalSupport/?page=<%=data.pagePrev%>">&laquo;</a></li>
+                    <%for(let i=1; i<=data.totalPages; i++){%>
+                    <li class="page-item"><a class="page-link" href="/staff/PersonalSupport/?page=<%=i%>"><%=i%></a></li>
+                    <%}%>
+                    <li class="page-item"><a class="page-link" href="/staff/PersonalSupport/?page=<%=data.pageNext%>">&raquo;</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                <a class="btn btn-danger" href="/staff" role="button">Back</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<%-include ('../layouts/footer.ejs')-%>

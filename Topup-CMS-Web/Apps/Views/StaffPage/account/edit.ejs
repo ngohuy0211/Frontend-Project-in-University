@@ -1,0 +1,103 @@
+<%-include ('../layouts/header.ejs')-%>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Manage Account
+            <small>Control panel</small>
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                            <fieldset class="fieldset">
+                                <h3 class="fieldset-title">Update Account</h3>
+                                <div class="form-group avatar">
+                                    <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                        <img class="img-rounded img-responsive img"
+                                                        <%if(data.user.User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                                        <%}else{%>src="/static/images/<%=data.user.User_avatar%>" <%}%> alt="">
+                                                        <p><%=data.user.User_avatar%></p>
+                                    </figure>
+                                    <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                        <input type="file" class="file-uploader pull-left" value="<%=data.user.User_avatar%>" name="User_avatar">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="<%=data.user.User_full%>" name="User_full" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="email" class="form-control" value="<%=data.user.User_mail%>" name="User_mail" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="pass" class="form-control" value="<%=data.user.User_pass%>" name="User_pass" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Password must be at least 8 characters, at least 1 uppercase letter and 1 lowercase letter!">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="<%=data.user.User_address%>" name="User_address" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="<%=data.user.User_gender%>" name="User_gender" required>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Day Of Birth</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="<%=data.user.User_birth%>" name="User_birth" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="number" class="form-control" value="<%=data.user.User_phone%>" required>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <input class="btn btn-primary" type="submit" value="Update Information">
+                                    <a class="btn btn-secondary" href="/staff/Account/<%=data.role%>">Cancel</a>
+                                </div>
+                            </div>
+                            <script type = "text/javascript">
+                                function validateForm()  {
+                                    alert("Update Successfull!")
+                                    return true;
+                                }
+                            </script>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- /.content -->
+</div>
+
+<%-include ('../layouts/footer.ejs')-%>

@@ -1,0 +1,83 @@
+<%-include ('../layouts/header.ejs')-%>
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <!-- Main content -->
+   <main class="main-container container">
+      <div class="view-account">
+         <section class="module">
+            <div class="module-inner">
+               <h3 class="fieldset-title">ROLE: <%=Role.Role_Name%></h3>
+               <input type="hidden" id="role_id" value="<%=Role.role_id%>">
+               <div class="content-panel">
+                  <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <h3 style="text-align: center;">Statistics the number of people interacting</h3>
+            <div class="table-responsive">
+               <table class="table table-striped table-hover" border="2">
+                  <tr id="user_full">
+                     <th>Full Name</th>
+                  </tr>
+                  <tr id="sender">
+                     <th>Sender</th>
+                  </tr>
+                  <tr id="receiver">
+                     <th>Receiver</th>
+                  </tr>
+               </table>
+            </div>
+            <div class="form-group">
+               <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                  <a class="btn btn-danger" href="/staff" role="button">Back</a>
+               </div>
+            </div>
+      </div>
+</div>
+</section>
+</div>
+</main>
+<!-- /.content -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/User/js/chart.js"></script>
+<script>
+   socket.on("Sender_Receiver", (sender, receiver, User) => {
+      let arr_user = []
+      let arr_sender = []
+      let arr_receiver = []
+      for (i = 0; i <= User.length - 1; i++) {
+         arr_user.push(User[i].User_full)
+      }
+      for (i = 0; i <= sender.length - 1; i++) {
+         arr_sender.push(sender[i])
+      }
+      for (i = 0; i <= receiver.length - 1; i++) {
+         arr_receiver.push(receiver[i])
+      }
+      new Chart(document.getElementById("bar-chart-grouped"), {
+         type: 'bar',
+         data: {
+           labels: arr_user,
+           datasets: [
+             {
+               label: "Sender",
+               backgroundColor: "#3e95cd",
+               data: arr_sender
+             }, {
+               label: "Receiver",
+               backgroundColor: "#8e5ea2",
+               data: arr_receiver
+             }
+           ]
+         },
+         options: {
+           title: {
+             display: true,
+             text: 'Graph of statistics the number of people interacting'
+           }
+         }
+     });
+   })
+</script>
+
+<%-include ('../layouts/footer.ejs')-%>

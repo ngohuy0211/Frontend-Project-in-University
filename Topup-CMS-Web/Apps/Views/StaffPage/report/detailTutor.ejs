@@ -1,0 +1,86 @@
+<%-include ('../layouts/header.ejs')-%>
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <!-- Main content -->
+   <main class="main-container container">
+      <div class="view-account">
+         <section class="module">
+            <div class="module-inner">
+               <h3 class="fieldset-title">Full Name: <%=data.Tutor.User_full%></h3>
+                <input type="hidden" value="<%=data.Tutor._id%>" id="tutor_id">
+               <div class="content-panel">
+                  <canvas id="sum_student" width="800" height="450"></canvas>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <h3 style="text-align: center;">List Student Support</h3>
+            <div class="table-responsive" style="margin-left: 100px; margin-right: 100px; height: 500px;">
+               <table class="table table-striped table-hover" border="2">
+                  <tr>
+                     <th>Full Name</th>
+                     <th>Student ID</th>
+                  </tr>
+                  <tr>
+                     <td>
+                         <ul id="student_name">
+
+                         </ul>
+                     </td>
+                     <td>
+                         <ul id="student_id">
+
+                         </ul>
+                     </td>
+                  </tr>
+               </table>
+               <br>
+               <div class="form-group">
+                  <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                     <a class="btn btn-danger" href="/staff/TutorChart" role="button">Back</a>
+                  </div>
+               </div>
+            </div>
+      </div>
+</div>
+</section>
+</div>
+</main>
+<!-- /.content -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/User/js/chart.js"></script>
+<script>
+    socket.on('sum_student_support', (list_student, Student)=>{
+      var ctx = document.getElementById("sum_student").getContext("2d");
+
+      var data = {
+         labels: ["Total number of students in charge"],
+         datasets: [
+            {
+               label: "Student",
+               backgroundColor: "#80aaff",
+               data: [list_student.length]
+            },
+         ]
+      };
+
+      var myBarChart = new Chart(ctx, {
+         type: 'bar',
+         data: data,
+         options: {
+            title:{
+               display: true,
+               text: "Total number of students in charge"
+            },
+            barValueSpacing: 20,
+            scales: {
+               yAxes: [{
+                  ticks: {
+                     min: 0,
+                  }
+               }]
+            }
+         }
+      });
+    })
+</script>
+<%-include ('../layouts/footer.ejs')-%>

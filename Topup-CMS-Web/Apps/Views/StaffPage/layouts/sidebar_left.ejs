@@ -1,0 +1,45 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <%for(x in locals.user){%>
+            <div class="pull-left" style="color: white;">
+                <p><%=locals.user[x].User_full%></p>
+                <a href="#" style="font-size: 13px;"><i class="fa fa-circle text-success"></i>Online</a>
+            </div>
+           <%}%>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree" id="sideNavigation">
+            <li class="header">STAFF FUNCTION</li><br>
+            <li>
+                <a href="/staff/Account">
+                    <i class="fa fa-th"></i> <span>Account Management</span>
+                </a>
+            </li><br>
+            <li>
+                <a href="/staff/PersonalSupport">
+                    <i class="fa fa-code"></i> <span>Personal Support Management</span>
+                </a>
+            </li><br>
+            <li>
+                <a href="/staff/Interactive">
+                    <i class="fa fa-code"></i> <span>Interactive Management</span>
+                </a>
+            </li><br>
+            <li>
+                <a href="/staff/StudentSupport">
+                    <i class="fa fa-code"></i> <span>Student Be Support</span>
+                </a>
+            </li><br>
+            <li>
+                <a href="/staff/TutorChart">
+                    <i class="fa fa-code"></i> <span>Personal Tutor Support</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- Script for dropdown -->
+    <!-- /.sidebar -->
+</aside>

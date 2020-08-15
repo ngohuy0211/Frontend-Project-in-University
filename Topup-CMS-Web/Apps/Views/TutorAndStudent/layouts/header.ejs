@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Of Greenwich Viet Nam</title>
+    <link href="/static/User/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/User/css/chatbox.css">
+    <link
+        href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100'
+        rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.css" type="text/css"
+        media="screen"/>
+     <link href="/static/User/css/sequence-looptheme.css" rel="stylesheet" media="all" />
+    <link href="/static/User/css/style.css" rel="stylesheet">
+    <link href="/static/User/css/slider.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+</head>
+<body>
+    <div class="header">
+        <div style="background-color: #2b3494; width: 100%; height: 25px;">
+            <div class="header-top">
+                <div class="col-md-4">
+                    <ul>
+                        <li>
+                            <a href="/logout"><span style="color: blue; border-radius: 3px; background-color: white; padding-right: 5px; padding-left: 5px;">Logout</span></a>
+                            <a href="/user/profile">
+                                <span style="color: blue; border-radius: 3px; background-color: white; margin-left: 10px; padding-left: 5px;">Profile
+                                    <i class="fa fa-address-card-o" style="margin-right: 5px;"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-4 col-sm-4">
+                <div class="logo">
+                    <a href="/user">
+                        <img src="/static/User/images/logo.png" style="max-width: 100%; height: 90px;">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8">
+                <div class="clearfix"></div>
+                <div class="header-bottom" style="margin-top: 20px;">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left; border: 1px solid blue ;background-color: blue">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse color">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/user">Home</a></li>
+                            <li><a href="/user/chat">Chat</a></li>
+                            <%for(x in locals.user){%>
+                            <li><a href="/user/dashboard/<%=locals.user[x]._id%>">DashBoard</a></li>
+                            <%}%>
+                            <li><a href="/user/contact">Contact Staff</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div style="background-color: #2b3494; width: 100%; height: 25px;">
+        .
+    </div>
+    <div class="clearfix"></div>

@@ -1,0 +1,36 @@
+<%-include ('layouts/header');-%>
+
+<div class="col-md-10 col-sm-9 col-xs-12">
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                            <fieldset class="fieldset">
+                                <br>
+                                <h3 class="fieldset-title">Your Information</h3>
+                                <br> <br>
+                                    <%for(x in locals.user){%>
+                                        <div class="card" style="background-color:#9494b8">
+                                            <img
+                                            <%if(locals.user[x].User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                            <%}else{%>src="/static/images/<%=locals.user[x].User_avatar%>" <%}%> alt="" style="width:70%">
+                                        <h2><%=locals.user[x].User_full%></h2>
+                                        <p class="title">ID: <%=locals.user[x].User_ID%></p>
+                                        <p class="font"><%=locals.user[x].User_mail%></p>
+                                        </div>
+                            </fieldset>
+                            <br>
+                            <div class="clearfix"></div>
+                            <hr>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <%}%>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+<%-include ('layouts/footer');-%>
